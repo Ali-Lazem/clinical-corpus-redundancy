@@ -1,0 +1,10 @@
+# Figure generation:
+matplotlib>=3.5
+numpy>=1.20
+
+# Token-provenance analysis (redundancy_full_analysis.py):
+# The tokenizer is optional and auto-detected. For exact Llama-family token
+# counts install transformers; otherwise the tool falls back to tiktoken,
+# then to a whitespace estimate.
+# transformers>=4.30   # optional, for exact model-family tokenization
+# tiktoken>=0.4        # optional fallback tokenizer

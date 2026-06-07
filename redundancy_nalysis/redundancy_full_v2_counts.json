@@ -1,0 +1,16 @@
+{
+  "_note": "Aggregate token-provenance counts at full 167,034-patient scale. Counts only; no clinical text.",
+  "global": {
+    "unique_source_tokens": 104151335,
+    "unique_generated_tokens": 168497897,
+    "duplicated_generated_tokens": 298250093,
+    "copied_context_tokens": 1695212466,
+    "scaffold_tokens": 244561624,
+    "total_tokens": 2510673415,
+    "trainable_unique_tokens": 272649232,
+    "redundant_tokens": 1993462559,
+    "TUR": 0.1086, "CCR": 0.6752,
+    "redundancy_ratio_vs_source": 19.14,
+    "pct_trainable": 10.9, "pct_redundant": 79.4, "pct_scaffold": 9.7
+  }
+}
