@@ -144,6 +144,12 @@ def fig3():
     runpy.run_path("make_fig3.py")
     print("  wrote redundancy_fig3_schematic")
 
+def fig5():
+    # Fig 5 is the single-record worked example; rendered by its standalone script
+    import runpy
+    runpy.run_path("make_fig5_worked_example.py")
+    print("  wrote redundancy_fig5_worked_example")
+
 def fig4():
     rows=[]
     for n,tot,cx,ug,dp,sc in CHANNELS:
@@ -187,5 +193,5 @@ def fig4():
 
 if __name__=="__main__":
     print("Generating figures into ./figures/ ...")
-    fig1(); fig2(); fig3(); fig4()
+    fig1(); fig2(); fig3(); fig4(); fig5()
     print("Done.")
