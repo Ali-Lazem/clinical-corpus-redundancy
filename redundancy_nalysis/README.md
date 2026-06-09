@@ -114,4 +114,5 @@ analysed corpus (not included here) was run on 4× NVIDIA H200 GPUs.
 
 ## License
 
-See [LICENSE](LICENSE).
+Code is licensed under MIT.
+Papers is licensed under CC BY 4.0.
