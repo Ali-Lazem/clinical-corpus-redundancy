@@ -1,10 +1,16 @@
-# Figure generation:
-matplotlib>=3.5
-numpy>=1.20
+# PRD classifier
 
 # Token-provenance analysis (redundancy_full_analysis.py):
 # The tokenizer is optional and auto-detected. For exact Llama-family token
 # counts install transformers; otherwise the tool falls back to tiktoken,
 # then to a whitespace estimate.
-# transformers>=4.30   # optional, for exact model-family tokenization
+# transformers>=4.40  # optional, for exact model-family tokenization
 # tiktoken>=0.4        # optional fallback tokenizer
+
+# compression corroboration
+pyppmd>=1.3.0
+# figures
+matplotlib>=3.7
+numpy>=1.24
+# near-duplicate robustness
+datasketch>=1.6
