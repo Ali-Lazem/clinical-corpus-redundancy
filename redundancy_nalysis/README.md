@@ -1,84 +1,107 @@
-# Token-provenance analysis for LLM-generated clinical corpora
+# Provenance-based Redundancy Decomposition (PRD)
 
-Code accompanying **"How much of an LLM-generated clinical corpus is actually
-new? A production-scale measurement of content redundancy for provenance
-classification"** ([authors], npj Digital Medicine, 2026). Preprint: [DOI].
+Code accompanying:
 
-This repository contains the provenance-classification tool, its validation
-and robustness checks, and the figure-generation scripts. Applied to the
-output of a multi-task clinical extraction pipeline (167,034 patient
-narratives, 2.51 billion generated tokens across ten text-bearing channels),
-the tool classifies every output token by provenance and shows that only
-10.9% is trainable-unique content while 79.4% is redundant — raw token count
-overstates information content by roughly ninefold.
+> **How much of an LLM-generated clinical corpus is actually new?
+> A production-scale measurement of content redundancy for provenance classification**
+> Ali H. Lazem, William J. Teahan. *(under review)*
 
-## What this is
+This repository contains the token-provenance classifier (PRD), its
+validation and robustness checks, the compression-based corroboration, and
+the figure-generation scripts used in the paper. It does **not** contain the
+extraction pipeline that produced the corpus, nor the derived corpus itself.
+The source corpus (PMC-Patients) is publicly available (Zhao et al., 2023).
 
-**Core tool**
-- `redundancy_full_analysis.py` — the token-provenance classifier. Reads a
-  pipeline's output and partitions every token into five provenance
-  categories (unique source, unique generated, duplicated generated, copied
-  context, scaffold), then reports the Trainable-Unique Ratio (TUR) and
-  Context-Copy Ratio (CCR). Pipeline-agnostic: point it at any
-  equivalently-structured corpus.
+## What this code does
 
-**Validation and robustness**
-- `validate_classifier.py` — validates the field-to-category mapping on a
-  random sample of records, confirming that copied-context fields are
-  verbatim substrings of the source narrative and that generated fields are
-  not. Reproduces the validation reported in the Methods.
-- `near_dup_robustness.py` — MinHash near-duplicate robustness check
-  (Jaccard > 0.85) on a sample of generated content, confirming the
-  exact-match redundancy figures are a conservative lower bound.
+PRD classifies every token of a multi-task LLM extraction corpus into one of
+five provenance categories — unique source, unique generated, duplicated
+generated, copied context, and scaffold — and aggregates them into
+corpus- and channel-level redundancy measures (the Trainable-Unique Ratio
+and Context-Copy Ratio). An independent compression-based analysis
+corroborates the decomposition without using the provenance labels.
 
-**Figures**
-- `make_all_figures.py` — regenerates all five paper figures in one pass
-  (invokes `make_fig3.py` and `make_fig5_worked_example.py`).
-- `make_fig3.py` — the context-copy mechanism schematic (Figure 3).
-- `make_fig5_worked_example.py` — the single-record worked example (Figure 5),
-  rendered from the measured field sizes of one real record.
+## Repository layout
 
-**Data**
-- `redundancy_full_v2_counts.json` — aggregate token counts per category per
-  channel (counts only; no clinical text).
+```
+prd/
+  redundancy_full_analysis_v2.py     # the PRD classifier (main tool)
+  validate_classifier.py             # field-to-category mapping validation
+  near_dup_robustness.py             # MinHash near-duplicate robustness check
+compression/
+  compression_redundancy.py          # aligned compression analysis (4 streams x 4 compressors)
+  aggregate_compression_samples.py   # Monte-Carlo aggregation (mean +/- s.d.)
+figures/
+  make_sankey.py                     # Fig 1: source-to-output composition
+  make_pertask.py                    # Fig 2: per-task two-mechanism breakdown
+  make_schematic.py                  # Fig 3: per-patient narrative replication
+  make_composition.py                # Fig 4: per-channel provenance composition
+  make_worked_example.py             # Fig 5: single-record field-size breakdown
+  make_compression_fig.py            # Fig: compression composite
+  make_perchannel_complementarity.py # Fig: provenance vs compression per channel
+  make_si_fig_s1.py                  # SI Fig S1: mechanism-level decomposition
+example_usage.py                     # minimal end-to-end example
+requirements.txt
+LICENSE
+```
 
-## What this is NOT
-
-The extraction pipeline that produced the corpus, and the derived corpus
-itself, are not included (see the paper's data-availability statement; the
-corpus is reserved for a forthcoming dataset paper pending human evaluation).
-
-## Install & run
+## Installation
 
 ```bash
 pip install -r requirements.txt
-python3 make_all_figures.py          # regenerate all five figures into figures/
 ```
 
-Run the analysis on your own pipeline output:
+Requires Python 3.10+. The PRD classifier uses only the standard library
+plus a tokenizer; the compression analysis additionally requires `pyppmd`.
+
+## Usage
+
+Run the provenance classifier over a pipeline's output directory:
 
 ```bash
-python3 redundancy_full_analysis.py \
-    --dir path/to/data \
-    --hf-tokenizer path/to/tokenizer \
-    --out path/to/output/redundancy_full_v2.json \
-    --sample 1.0
+python prd/redundancy_full_analysis_v2.py \
+    --dir /path/to/pipeline/output \
+    --hf-tokenizer <tokenizer> \
+    --out report.json
 ```
 
-The tokenizer is optional: with `transformers` installed it uses the exact
-model-family tokenizer; otherwise it falls back to `tiktoken`, then to a
-whitespace estimate. Token counts are tokenizer-dependent in absolute
-magnitude but not in relative composition.
-
-## Reproducing the paper's validation and robustness checks
+Run the compression corroboration (Monte-Carlo over 10% subsamples):
 
 ```bash
-# field-to-category mapping validation (Methods)
-python3 validate_classifier.py \
-    --enriched path/to/multitask_data_enriched.jsonl \
-    --sample 200
+for s in 1 2 3 4 5 6 7 8 9 10; do
+  python compression/compression_redundancy.py \
+      --enriched /path/to/multitask_data_enriched.jsonl \
+      --risk-dir /path/to/risk_files \
+      --sample 0.1 --seed $s --workers 0 \
+      --out compression_sample_$s.json
+done
+python compression/aggregate_compression_samples.py \
+    --glob "compression_sample_*.json" --out compression_montecarlo.json
+```
 
-# near-duplicate robustness (Results)
+See `example_usage.py` for a minimal worked example.
+
+## Reproducing the paper figures
+
+Each script in `figures/` regenerates one figure from the analysis outputs.
+See the header of each script for its required input.
+
+## Citation
+
+```bibtex
+@article{lazem2026redundancy,
+  title   = {How much of an LLM-generated clinical corpus is actually new?
+             A production-scale measurement of content redundancy for
+             provenance classification},
+  author  = {Lazem, Ali H. and Teahan, William J.},
+  year    = {2026},
+  note    = {Under review}
+}
+```
+
+## License
+
+Released under the MIT License. See `LICENSE`.
 python3 near_dup_robustness.py \
     --dir path/to/output_dir \
     --sample 0.02 \
