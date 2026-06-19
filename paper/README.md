@@ -8,4 +8,4 @@
 | `references.bib` | Bibliography |
 
 The SI tables are LaTeX in `supplementary.tex`; the SI figures
-(`fig_s1_mechanisms.png`, `loss_panel.pdf`) are in `figures/`.
+(`fig_s1_mechanisms.pdf`, `loss_panel.pdf`) are in `figures/`.
