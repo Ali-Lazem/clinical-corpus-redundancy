@@ -44,11 +44,11 @@ ten channels with a single corpus-wide hash set (so repetition is detected even
 across channels):
 
 ```
-                         ┌─ unique source      ┐
-   trainable-unique  ────┤                      │
-                         └─ unique generated    │
-                                                ├──  every token, classified
-   redundant  ───────────┬─ copied context      │
+                         ┌─ unique source        ┐
+   trainable-unique  ────┤                       │
+                         └─ unique generated     │
+                                                 ├──  every token, classified
+   redundant  ───────────┬─ copied context       │
                          └─ duplicated generation│
    scaffold  ────────────── identifiers/metadata ┘
 ```
