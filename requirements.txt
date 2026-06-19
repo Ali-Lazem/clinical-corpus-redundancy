@@ -1,0 +1,10 @@
+# --- provenance + compression analysis ---
+transformers>=4.40
+pyppmd>=1.1.0          # PPMd (order-16) compression; std lib covers gzip/bz2/lzma
+# --- downstream adaptation + probing ---
+torch>=2.1
+datasets>=2.18
+seqeval>=1.2.2
+# --- figures ---
+matplotlib>=3.7
+numpy>=1.24
