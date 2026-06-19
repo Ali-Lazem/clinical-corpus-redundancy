@@ -1,0 +1,158 @@
+{
+  "per_condition": {
+    "A_raw": {
+      "ALL": {
+        "f1_mean": 0.6719,
+        "f1_sd": 0.0028,
+        "n_seeds": 3
+      },
+      "RARE": {
+        "f1_mean": 0.8201,
+        "f1_sd": 0.0253,
+        "n_seeds": 3
+      },
+      "COMMON": {
+        "f1_mean": 0.8407,
+        "f1_sd": 0.0101,
+        "n_seeds": 3
+      },
+      "UNSEEN": {
+        "f1_mean": 0.4358,
+        "f1_sd": 0.0025,
+        "n_seeds": 3
+      }
+    },
+    "B_dedup": {
+      "ALL": {
+        "f1_mean": 0.7006,
+        "f1_sd": 0.0191,
+        "n_seeds": 3
+      },
+      "RARE": {
+        "f1_mean": 0.832,
+        "f1_sd": 0.0263,
+        "n_seeds": 3
+      },
+      "COMMON": {
+        "f1_mean": 0.8665,
+        "f1_sd": 0.0093,
+        "n_seeds": 3
+      },
+      "UNSEEN": {
+        "f1_mean": 0.471,
+        "f1_sd": 0.0404,
+        "n_seeds": 3
+      }
+    },
+    "B1_ctxremoved": {
+      "ALL": {
+        "f1_mean": 0.6881,
+        "f1_sd": 0.0193,
+        "n_seeds": 3
+      },
+      "RARE": {
+        "f1_mean": 0.8456,
+        "f1_sd": 0.0028,
+        "n_seeds": 3
+      },
+      "COMMON": {
+        "f1_mean": 0.8674,
+        "f1_sd": 0.0175,
+        "n_seeds": 3
+      },
+      "UNSEEN": {
+        "f1_mean": 0.4394,
+        "f1_sd": 0.0263,
+        "n_seeds": 3
+      }
+    }
+  },
+  "bootstrap": {
+    "A_raw": {
+      "UNSEEN": {
+        "f1": 0.4358,
+        "lo": 0.4043,
+        "hi": 0.4653,
+        "n": 1101
+      },
+      "ALL": {
+        "f1": 0.6719,
+        "lo": 0.6538,
+        "hi": 0.6896,
+        "n": 2880
+      },
+      "COMMON": {
+        "f1": 0.8407,
+        "lo": 0.82,
+        "hi": 0.8579,
+        "n": 1323
+      },
+      "RARE": {
+        "f1": 0.82,
+        "lo": 0.7844,
+        "hi": 0.8548,
+        "n": 456
+      }
+    },
+    "B_dedup": {
+      "UNSEEN": {
+        "f1": 0.4708,
+        "lo": 0.4404,
+        "hi": 0.4987,
+        "n": 1101
+      },
+      "ALL": {
+        "f1": 0.7007,
+        "lo": 0.6826,
+        "hi": 0.7176,
+        "n": 2880
+      },
+      "COMMON": {
+        "f1": 0.8665,
+        "lo": 0.8496,
+        "hi": 0.8852,
+        "n": 1323
+      },
+      "RARE": {
+        "f1": 0.8322,
+        "lo": 0.7963,
+        "hi": 0.8654,
+        "n": 456
+      }
+    },
+    "B1_ctxremoved": {
+      "UNSEEN": {
+        "f1": 0.4393,
+        "lo": 0.4089,
+        "hi": 0.4692,
+        "n": 1101
+      },
+      "ALL": {
+        "f1": 0.6881,
+        "lo": 0.6704,
+        "hi": 0.7061,
+        "n": 2880
+      },
+      "COMMON": {
+        "f1": 0.8675,
+        "lo": 0.8495,
+        "hi": 0.8845,
+        "n": 1323
+      },
+      "RARE": {
+        "f1": 0.8455,
+        "lo": 0.8121,
+        "hi": 0.877,
+        "n": 456
+      }
+    }
+  },
+  "headline_dedup_effect": {
+    "delta_ALL": 0.0287,
+    "delta_RARE": 0.0119,
+    "delta_COMMON": 0.0258,
+    "delta_UNSEEN": 0.0352,
+    "did_rare_vs_common": -0.0139,
+    "interpretation": "positive did_rare_vs_common => de-duplication helps RARE diseases MORE than common ones (supports the hypothesis)"
+  }
+}

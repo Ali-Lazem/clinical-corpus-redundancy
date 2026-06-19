@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "ppmd_order": 16,
+    "ppmd_mem_mb": 2048,
+    "note": "full-corpus, sequential, streaming; one model in RAM at a time"
+  },
+  "streams": {
+    "full": {
+      "gzip": {
+        "raw_bytes": 10026990794,
+        "compressed_bytes": 593234255,
+        "ratio": 0.0592,
+        "reduction_pct": 94.08
+      },
+      "bzip2": {
+        "raw_bytes": 10026990794,
+        "compressed_bytes": 535507560,
+        "ratio": 0.0534,
+        "reduction_pct": 94.66
+      },
+      "lzma": {
+        "raw_bytes": 10026990794,
+        "compressed_bytes": 314590172,
+        "ratio": 0.0314,
+        "reduction_pct": 96.86
+      },
+      "ppmd": {
+        "raw_bytes": 10026990794,
+        "compressed_bytes": 433820727,
+        "ratio": 0.0433,
+        "reduction_pct": 95.67
+      }
+    },
+    "trainable": {
+      "gzip": {
+        "raw_bytes": 1226444865,
+        "compressed_bytes": 275747981,
+        "ratio": 0.2248,
+        "reduction_pct": 77.52
+      },
+      "bzip2": {
+        "raw_bytes": 1226444865,
+        "compressed_bytes": 223873721,
+        "ratio": 0.1825,
+        "reduction_pct": 81.75
+      },
+      "lzma": {
+        "raw_bytes": 1226444865,
+        "compressed_bytes": 179783668,
+        "ratio": 0.1466,
+        "reduction_pct": 85.34
+      },
+      "ppmd": {
+        "raw_bytes": 1226444865,
+        "compressed_bytes": 144738090,
+        "ratio": 0.118,
+        "reduction_pct": 88.2
+      }
+    },
+    "copied_ctx": {
+      "gzip": {
+        "raw_bytes": 7502351942,
+        "compressed_bytes": 263866082,
+        "ratio": 0.0352,
+        "reduction_pct": 96.48
+      },
+      "bzip2": {
+        "raw_bytes": 7502351942,
+        "compressed_bytes": 316083711,
+        "ratio": 0.0421,
+        "reduction_pct": 95.79
+      },
+      "lzma": {
+        "raw_bytes": 7502351942,
+        "compressed_bytes": 160710932,
+        "ratio": 0.0214,
+        "reduction_pct": 97.86
+      },
+      "ppmd": {
+        "raw_bytes": 7502351942,
+        "compressed_bytes": 280924729,
+        "ratio": 0.0374,
+        "reduction_pct": 96.26
+      }
+    },
+    "dup_gen": {
+      "gzip": {
+        "raw_bytes": 1298193987,
+        "compressed_bytes": 207249050,
+        "ratio": 0.1596,
+        "reduction_pct": 84.04
+      },
+      "bzip2": {
+        "raw_bytes": 1298193987,
+        "compressed_bytes": 165537056,
+        "ratio": 0.1275,
+        "reduction_pct": 87.25
+      },
+      "lzma": {
+        "raw_bytes": 1298193987,
+        "compressed_bytes": 125893280,
+        "ratio": 0.097,
+        "reduction_pct": 90.3
+      },
+      "ppmd": {
+        "raw_bytes": 1298193987,
+        "compressed_bytes": 105582281,
+        "ratio": 0.0813,
+        "reduction_pct": 91.87
+      }
+    }
+  },
+  "raw_bytes": {
+    "full": 10026990794,
+    "trainable": 1226444865,
+    "copied_ctx": 7502351942,
+    "dup_gen": 1298193987
+  },
+  "full_vs_trainable_factor": {
+    "gzip": 3.8,
+    "bzip2": 3.42,
+    "lzma": 4.67,
+    "ppmd": 2.73
+  },
+  "copied_ctx_byte_fraction": 0.7482,
+  "dup_gen_byte_fraction": 0.1295
+}
