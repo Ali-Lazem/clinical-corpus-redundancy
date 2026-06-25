@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1262258557.svg)](https://doi.org/10.5281/zenodo.20848582)
+
 # Provenance-based Redundancy Decomposition (PRD)
 
 ### Measuring how much of an LLM-generated clinical corpus is actually new
