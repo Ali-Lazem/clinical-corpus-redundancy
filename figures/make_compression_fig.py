@@ -36,7 +36,7 @@ C_DUP   = "#f4a259"   # duplicated generation (orange -- redundancy)
 C_SCAF  = "#cfcfcf"   # scaffold (neutral grey)
 
 COMP_COLORS = {"gzip":"#f6c89a","bzip2":"#ef8a52","lzma":"#cc2a1e","ppmd":"#7a1d14"}
-COMP_LABELS = {"gzip":"gzip","bzip2":"bzip2","lzma":"LZMA","ppmd":"PPMd"}
+COMP_LABELS = {"gzip":"gzip","bzip2":"bzip2","lzma":"LZMA","ppmd":"PPMD"}
 COMP_ORDER  = ["gzip","bzip2","lzma","ppmd"]
 
 STREAM_ORDER  = ["full","trainable","copied_ctx","dup_gen"]
