@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --mem=256G
 #SBATCH --time=24:00:00
-#SBATCH -A SCWF00175_w_teahan_171
+#SBATCH -A SCWF00175
 
 module load Python/3.13.5-GCCcore-14.3.0
 # make sure pyppmd is available to THIS python:
