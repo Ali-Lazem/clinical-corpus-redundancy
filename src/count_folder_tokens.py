@@ -20,7 +20,7 @@ def count_tokens_in_folder():
         tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
         print("✓ Tokenizer loaded successfully.\n")
     except Exception as e:
-        print(f"❌ Error loading local tokenizer: {e}")
+        print(f"Error loading local tokenizer: {e}")
         print("Falling back to a standard whitespace word-count estimate instead.")
         tokenizer = None
 
@@ -32,7 +32,7 @@ def count_tokens_in_folder():
     file_counts = {}
     
     if not os.path.exists(target_dir):
-        print(f"❌ Error: Directory {target_dir} not found. Run this from your main code folder.")
+        print(f"Error: Directory {target_dir} not found. Run this from your main code folder.")
         sys.exit(1)
         
     # Walk through the folder
@@ -69,7 +69,7 @@ def count_tokens_in_folder():
                 total_tokens += file_tokens
                 
             except Exception as e:
-                print(f" ❌ ERROR reading file: {e}")
+                print(f"ERROR reading file: {e}")
 
     print("==============================================================================")
     print("FINAL TOKEN SUMMARY")
