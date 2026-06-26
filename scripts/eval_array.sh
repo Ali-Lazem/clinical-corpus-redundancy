@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #SBATCH --job-name=eval_array
 #SBATCH --partition=gpu_h200
-#SBATCH --account=SCWF00175_w_teahan_171
+#SBATCH --account=SCWF00175
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=64
