@@ -12,7 +12,7 @@
 
 # ----- environment -----
 module purge
-module load Miniforge3   # FIXED
+module load Miniforge3   
 module load CUDA/12.1.1
 
 source /scratch/SCWF00175/shared/envs/ai_pipeline_venv/bin/activate
