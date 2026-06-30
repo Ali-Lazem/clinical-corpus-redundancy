@@ -1,3 +1,4 @@
+[![arXiv](https://img.shields.io/badge/arXiv-2606.29605-b31b1b.svg)](https://arxiv.org/abs/2606.29605)
 [![DOI](https://zenodo.org/badge/1262258557.svg)](https://doi.org/10.5281/zenodo.20848582)
 
 # Provenance-based Redundancy Decomposition (PRD)
@@ -120,16 +121,21 @@ included here.
 
 ## Citation
 
+If you use this code, please cite the paper:
+
 ```bibtex
-@article{lazem2026redundancy,
-  title   = {How much of an LLM-generated clinical corpus is actually new?
-             A production-scale measurement of content redundancy for
-             provenance classification},
-  author  = {Lazem, Ali H. and Teahan, William J.},
-  year    = {2026},
-  note    = {Manuscript in preparation}
+@misc{lazem2026llmgeneratedclinicalcorpusactually,
+      title={How much of an LLM-generated clinical corpus is actually new? A production-scale measurement of content redundancy for provenance classification},
+      author={Ali H. Lazem and William J. Teahan},
+      year={2026},
+      eprint={2606.29605},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.29605}
 }
 ```
+
+The code is also archived on Zenodo: https://doi.org/10.5281/zenodo.20848582
 
 ## License
 
