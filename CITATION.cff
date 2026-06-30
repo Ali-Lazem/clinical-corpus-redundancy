@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this software or the PRD method, please cite the paper below."
-title: "PRD: Provenance-based Redundancy Decomposition of an LLM-Generated Clinical Corpus"
+message: "If you use this software, please cite the paper below."
+title: "Provenance-based Redundancy Decomposition (PRD)"
 authors:
   - family-names: Lazem
     given-names: Ali H.
@@ -8,5 +8,16 @@ authors:
   - family-names: Teahan
     given-names: William J.
     orcid: "https://orcid.org/0000-0003-3640-6750"
-year: 2026
-license: MIT
+preferred-citation:
+  type: article
+  title: "How much of an LLM-generated clinical corpus is actually new? A production-scale measurement of content redundancy for provenance classification"
+  authors:
+    - family-names: Lazem
+      given-names: Ali H.
+    - family-names: Teahan
+      given-names: William J.
+  year: 2026
+  url: "https://arxiv.org/abs/2606.29605"
+identifiers:
+  - type: other
+    value: "arXiv:2606.29605"
